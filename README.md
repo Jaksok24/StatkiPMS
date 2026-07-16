@@ -1,61 +1,75 @@
-# Ships Port Management System
+# 🚢 Ships Port Management System
 
-A modern system for managing:
-* cruises,
-* reservations,
-* vessel schedules,
-* technical maintenance breaks,
-* web forms,
-* users and JWT authentication.
+A modern full-stack web application for managing cruise operations, reservations, vessel maintenance, and user administration.
 
-Project based on:
-* React + Vite
-* FastAPI
-* SQLite
-* Docker
-* JWT Authentication
+The project was built to simulate a production-like business application using a modern backend architecture with **FastAPI**, **React**, **Docker**, and **JWT Authentication**.
 
 ---
 
-# Technologies
-## Frontend
-* React
-* Vite
-* Axios
-* React Router
+## ✨ Features
 
-## Backend
-* FastAPI
-* SQLAlchemy
-* SQLite
-* JWT
-* Passlib / Bcrypt
-
-## DevOps
-* Docker
-* Docker Compose
+- 🔐 Secure JWT Authentication & Authorization
+- 🚢 Cruise management
+- 📅 Reservation management
+- 🔧 Vessel maintenance scheduling
+- 👥 User management
+- 📄 Interactive Swagger API documentation
+- 🐳 Fully Dockerized deployment
+- ⚡ Modern React frontend communicating with FastAPI backend
 
 ---
 
-# Project Structure
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|--------|------------|
+| Frontend | React, Vite, Axios, React Router |
+| Backend | FastAPI |
+| ORM | SQLAlchemy |
+| Database | SQLite |
+| Authentication | JWT, Passlib, Bcrypt |
+| Containerization | Docker, Docker Compose |
+
+---
+
+# 🏗️ Architecture
+
+```
+React (Vite)
+      │
+    Axios
+      │
+ REST API
+      │
+   FastAPI
+      │
+ SQLAlchemy
+      │
+    SQLite
+```
+
+---
+
+## 📂 Project Structure
+
+```
 project/
+│
 ├── backend/
 │   ├── app/
 │   │   ├── routers/
 │   │   ├── utils/
-│   │   ├── main.py
-│   │   ├── db.py
-│   │   ├── models.py
-│   │   ├── schemas.py
 │   │   ├── auth.py
-│   │   └── __init__.py
+│   │   ├── db.py
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   └── schemas.py
 │   │
 │   ├── storage/
 │   │   └── app.db
 │   │
 │   ├── Dockerfile
-│   ├── requirements.txt
-│   └── .dockerignore
+│   └── requirements.txt
 │
 ├── frontend/
 │   ├── src/
@@ -63,144 +77,188 @@ project/
 │   └── package.json
 │
 └── docker-compose.yml
+```
 
 ---
 
-# Getting Started
-## 1. Clone the repository
-git clone REPO_URL
-cd project
+# 📸 Screenshots
+
+> Screenshots of the application will be added soon.
+
+- Login
+- Dashboard
+- Cruise Management
+- Reservations
+- Vessel Maintenance
+- Swagger API
 
 ---
 
-# Docker
-## Running the application
+# 🚀 Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/Jaksok24/StatkiPMS.git
+cd StatkiPMS
+```
+
+---
+
+## Run with Docker
+
+```bash
 docker compose up --build
+```
 
 ---
 
-# Frontend
-Frontend is available at:
+## Application URLs
+
+Frontend
+
+```
 http://localhost:5173
+```
 
----
+Backend
 
-# Backend API
-Backend is available at:
+```
 http://127.0.0.1:8000
+```
 
-Swagger UI:
+Swagger
+
+```
 http://127.0.0.1:8000/docs
+```
 
 ---
 
-# Administrator Account
-The system automatically creates an administrator account during the first startup.
+## Default Administrator Account
 
-## Username
-admin
+A default administrator account is automatically created during the first application startup.
 
-## Password
-zaq1@WSX
+```
+Username: admin
+Password: zaq1@WSX
+```
 
----
-
-# JWT Authentication
-The system utilizes:
-* Bearer Token
-* JWT
-* Authentication Middleware
-
-Once logged in, the token is:
-* saved in localStorage,
-* automatically added to Axios requests.
+> The default credentials are intended for local development only.
 
 ---
 
-# SQLite
-The database file is located at:
+# 🔐 Authentication
+
+The application implements:
+
+- JWT Authentication
+- Bearer Token
+- Password hashing using Bcrypt
+- Protected API endpoints
+
+After logging in, the access token is automatically stored in the browser and attached to every authorized request.
+
+---
+
+# 🗄️ Database
+
+SQLite database location:
+
+```
 backend/storage/app.db
+```
 
----
+To reset the database:
 
-# Database Reset
-## Linux / Mac
+Linux / macOS
+
+```bash
 rm backend/storage/app.db
+```
 
-## Windows
+Windows
+
+```cmd
 del backend\storage\app.db
+```
 
-Then run:
+Then rebuild the application:
+
+```bash
 docker compose down -v
 docker compose up --build
+```
 
 ---
 
-# API Endpoints
-## Auth
-POST   /auth/login
-GET    /auth/me
-POST   /auth/register
+# 📖 API Documentation
 
-## Cruises
-GET    /cruises
-POST   /cruises
-PUT    /cruises/{id}
-DELETE /cruises/{id}
+Interactive API documentation is available via Swagger UI:
 
-## Reservations
-GET    /reservations
-POST   /reservations
-PUT    /reservations/{id}
-DELETE /reservations/{id}
-
-## Breaks
-GET    /breaks
-POST   /breaks
-PUT    /breaks/{id}
-DELETE /breaks/{id}
+```
+http://127.0.0.1:8000/docs
+```
 
 ---
 
-# CORS
-The backend supports:
-http://localhost:5173
-http://127.0.0.1:5173
+# 💻 Local Development
 
-Configuration is located in:
-backend/app/main.py
+Backend
 
----
-
-# Development
-## Backend
+```bash
 uvicorn app.main:app --reload
+```
 
-## Frontend
+Frontend
+
+```bash
 npm install
 npm run dev
+```
 
 ---
 
-# Docker Rebuild
-After making changes to requirements.txt or Dockerfile:
-docker compose down
-docker compose build --no-cache
-docker compose up
+# 🚀 Future Improvements
+
+- PostgreSQL support
+- Role-based authorization
+- Unit and integration tests
+- CI/CD pipeline
+- Redis caching
+- Environment variables
+- Cloud deployment
+- Production-ready logging
 
 ---
 
-# Production
-Recommended:
-* PostgreSQL
-* Nginx reverse proxy
-* HTTPS
-* Environment variables (ENV)
-* Separate domains for frontend/backend
-* Docker volumes
+# 🎯 Project Goals
+
+The primary objective of this project was to gain hands-on experience in designing and developing a modern full-stack application using industry-standard technologies.
+
+The project demonstrates experience with:
+
+- Backend development using FastAPI
+- REST API design
+- SQL database modeling
+- JWT Authentication
+- Dockerized applications
+- React frontend integration
+- Software architecture
+- Business process automation
 
 ---
 
-# Author
-Jakub Sokołowski
-Poznań, Poland
+# 👨‍💻 Author
+
+**Jakub Sokołowski**
+
+Software & Data Engineer
+
+📍 Poznań, Poland
+
+LinkedIn:
+https://linkedin.com/in/...
+
+GitHub:
+https://github.com/Jaksok24
